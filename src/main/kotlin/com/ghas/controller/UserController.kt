@@ -31,8 +31,6 @@ class UserController(@Autowired private val userRepository: UserRepository) {
         }
     }
 
-
-
     @DeleteMapping("/{id}")
     fun deleteUser(@PathVariable id: Long) {
         if (userRepository.existsById(id)) {

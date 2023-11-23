@@ -46,7 +46,12 @@
       <artifactId>jaxb-impl</artifactId>
       <version>2.2.5-b10</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.22</version>
+      <scope>provided</scope>
+    </dependency>
     <!-- MySQL Connector -->
     <dependency>
       <groupId>mysql</groupId>
@@ -65,7 +70,7 @@
       <plugin>
         <groupId>org.jetbrains.kotlin</groupId>
         <artifactId>kotlin-maven-plugin</artifactId>
-        <version>1.5.21</version> <!-- Use the version of Kotlin you are using -->
+        <version>1.5.21</version>
         <executions>
           <execution>
             <id>compile</id>
@@ -81,7 +86,7 @@
           </execution>
         </executions>
         <configuration>
-          <jvmTarget>1.8</jvmTarget> <!-- Match the Java version -->
+          <jvmTarget>1.8</jvmTarget>
         </configuration>
       </plugin>
     </plugins>
