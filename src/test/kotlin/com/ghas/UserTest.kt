@@ -1,35 +1,59 @@
-package com.ghas
+package kotlin.com.ghas
 
 import com.ghas.entity.User
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 class UserTest {
 
     @Test
-    fun testPrimaryConstructor() {
-        val user = User(id = 1, name = "Pratiksha bhende", email = "pratikshab@gmail.com")
+    fun `createUser should create a user with given parameters`() {
+        // Arrange
+        val id = 1L
+        val name = "John Doe"
+        val email = "john.doe@example.com"
 
-        assertEquals(1, user.id)
-        assertEquals("Pratiksha bhende", user.name)
-        assertEquals("pratikshab@gmail.com", user.email)
+        // Act
+        val user = User(id, name, email)
+
+        // Assert
+        assertEquals(id, user.id)
+        assertEquals(name, user.name)
+        assertEquals(email, user.email)
     }
 
     @Test
-    fun testDefaultConstructor() {
-        val defaultUser = User()
+    fun `defaultConstructor should create a user with default values`() {
+        // Act
+        val user = User()
 
-        assertEquals(0, defaultUser.id)
-        assertEquals("", defaultUser.name)
-        assertEquals("", defaultUser.email)
+        // Assert
+        assertEquals(0L, user.id)
+        assertEquals("", user.name)
+        assertEquals("", user.email)
     }
 
     @Test
-    fun testGetterMethods() {
-        val user = User(id = 2, name = "Pratiksha bhende", email = "pratikshab@gmail.com")
+    fun `twoUsersWithSameValuesShouldBeEqual`() {
+        // Arrange
+        val user1 = User(1L, "John Doe", "john.doe@example.com")
+        val user2 = User(1L, "John Doe", "john.doe@example.com")
 
-        assertEquals(2, user.id)
-        assertEquals("Pratiksha bhende", user.name)
-        assertEquals("pratikshab@gmail.com", user.email)
+        // Assert
+        assertEquals(user1, user2)
+    }
+
+    @Test
+    fun `toStringShouldReturnExpectedString`() {
+        // Arrange
+        val user = User(1L, "John Doe", "john.doe@example.com")
+
+        // Act
+        val toStringResult = user.toString()
+
+        // Assert
+        assertTrue(toStringResult.contains("id=1"))
+        assertTrue(toStringResult.contains("name=John Doe"))
+        assertTrue(toStringResult.contains("email=john.doe@example.com"))
     }
 }
