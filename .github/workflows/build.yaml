@@ -1,0 +1,23 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Maven Artifactory Registry
+        run: |
+          echo "registries:
+            maven-artifactory:
+              type: maven-repository
+              url: https://pratikshab1406.jfrog.io/ui/repos/tree/General/kotlin-key-pratiksha
+              username: octocat
+              password: ${{secrets.MY_ARTIFACTORY_PASSWORD}}" 
